@@ -2,10 +2,12 @@
   "name": "codesheep-live-editor",
   "version": "0.1.0",
   "description": "Live code editor",
-  "main": "index.js",
+  "main": "index.jsx",
   "scripts": {
+    "clean": "rm -rf dist",
     "lint": "eslint .",
     "start": "webpack-dev-server",
+    "pretest": "npm run lint",
     "test": "mocha --compilers js:babel-register --require ./test/test-helper.jsx --recursive",
     "test:watch": "npm run test -- --watch"
   },
