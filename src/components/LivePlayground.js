@@ -1,10 +1,13 @@
 import React, { Component } from 'react'
+import LiveEditor from './LiveEditor'
+import LivePreview from './LivePreview'
 
 class LivePlayground extends Component {
-  render () {
+  render() {
     return (
       <div className="live-playground">
-        Hello World
+        <LiveEditor />
+        <LivePreview />
       </div>
     )
   }
