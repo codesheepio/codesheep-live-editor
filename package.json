@@ -4,8 +4,9 @@
   "description": "Live code editor",
   "main": "index.js",
   "scripts": {
+    "lint": "eslint .",
     "start": "webpack-dev-server",
-    "test": "mocha --compilers js:babel-register --require ./test/test-helper.js --recursive",
+    "test": "mocha --compilers js:babel-register --require ./test/test-helper.jsx --recursive",
     "test:watch": "npm run test -- --watch"
   },
   "repository": {
@@ -37,6 +38,11 @@
     "babel-register": "^6.11.6",
     "chai": "^3.5.0",
     "chai-jquery": "^2.0.0",
+    "eslint": "^3.2.2",
+    "eslint-config-airbnb": "^10.0.0",
+    "eslint-plugin-import": "^1.12.0",
+    "eslint-plugin-jsx-a11y": "^2.0.1",
+    "eslint-plugin-react": "^6.0.0",
     "jquery": "^3.1.0",
     "jsdom": "^9.4.1",
     "mocha": "^3.0.2",

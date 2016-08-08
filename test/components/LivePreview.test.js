@@ -1,14 +1,14 @@
-import { expect, renderComponent } from '../test-helper'
-import LivePreview from '../../src/components/LivePreview'
+import { expect, renderComponent } from '../test-helper';
+import LivePreview from '../../src/components/LivePreview';
 
 describe('LivePreview', () => {
-  let component
+  let component;
 
   beforeEach(() => {
-    component = renderComponent(LivePreview)
-  })
+    component = renderComponent(LivePreview);
+  });
 
   it('should have a correct class', () => {
-    expect(component).to.have.class('live-preview')
-  })
-})
+    expect(component).to.have.class('live-preview');
+  });
+});

@@ -1,0 +1,12 @@
+{
+  "env": {
+    "es6": true,
+    "node": true,
+    "mocha" : true,
+  },
+  "rules": {
+    "import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
+    "react/no-find-dom-node": 0, // allow findDOMNode in test-helper
+  },
+  "extends": airbnb,
+}
