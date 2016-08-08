@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
-import LiveEditor from './components/LiveEditor'
+import LivePlayground from './components/LivePlayground'
 
 console.log("hello")
 ReactDOM.render(
-  <LiveEditor />,
+  <LivePlayground />,
   document.getElementById('root')
 )

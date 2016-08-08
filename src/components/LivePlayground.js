@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 
-class LiveEditor extends Component {
+class LivePlayground extends Component {
   render () {
     return (
-      <div className="live-editor">
+      <div className="live-playground">
         Hello World
       </div>
     )
   }
 }
 
-export default LiveEditor
+export default LivePlayground
