@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import LiveEditor from './LiveEditor';
-import LivePreview from './LivePreview';
+import React, { Component } from 'react'
+import LiveEditor from './LiveEditor'
+import LivePreview from './LivePreview'
 
 class LivePlayground extends Component { // eslint-disable-line react/prefer-stateless-function
   render() {
@@ -9,8 +9,8 @@ class LivePlayground extends Component { // eslint-disable-line react/prefer-sta
         <LiveEditor />
         <LivePreview />
       </div>
-    );
+    )
   }
 }
 
-export default LivePlayground;
+export default LivePlayground

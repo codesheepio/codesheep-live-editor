@@ -2,13 +2,14 @@
   "name": "codesheep-live-editor",
   "version": "0.1.0",
   "description": "Live code editor",
-  "main": "index.jsx",
+  "main": "index.js",
   "scripts": {
     "clean": "rm -rf dist",
-    "lint": "eslint --ext .jsx --ext .js .",
+    "lint": "eslint .",
+    "lint:fix": "eslint --fix .",
     "start": "webpack-dev-server",
     "pretest": "npm run lint",
-    "test": "mocha --compilers js:babel-register --require ./test/test-helper.jsx --recursive",
+    "test": "mocha --compilers js:babel-register --require ./test/test-helper.js --recursive",
     "test:watch": "npm run test -- --watch"
   },
   "repository": {
@@ -48,6 +49,7 @@
     "eslint-plugin-react": "^6.0.0",
     "jquery": "^3.1.0",
     "jsdom": "^9.4.1",
+    "json-loader": "^0.5.4",
     "mocha": "^3.0.2",
     "react-addons-test-utils": "^15.3.0",
     "webpack": "^1.13.1",
