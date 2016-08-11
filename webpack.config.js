@@ -1,6 +1,7 @@
 const path = require('path')
 
 module.exports = {
+  devtool: 'source-map',
   entry: [
     path.join(__dirname, 'src', 'index.js'),
     'webpack-dev-server/client?http://localhost:8080',
@@ -27,5 +28,5 @@ module.exports = {
     fs: 'empty',
     net: 'empty',
     module: 'empty',
-  },
+  }
 }
