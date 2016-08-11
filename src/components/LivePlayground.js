@@ -6,8 +6,8 @@ class LivePlayground extends Component {
   render() {
     return (
       <div className="live-playground">
-        <LiveEditor />
-        <LivePreview />
+        <LiveEditor code="" />
+        <LivePreview code="" />
       </div>
     )
   }
