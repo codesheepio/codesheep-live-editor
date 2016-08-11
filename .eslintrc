@@ -7,7 +7,11 @@
   "rules": {
     "arrow-body-style": ["error", "always"],
     "no-trailing-spaces": ["error", { "skipBlankLines": true }],
+<<<<<<< 442ce778742edecb8c8234a99f93838f6bd59044
     "semi": ["error", "never"],
     "react/jsx-filename-extension": ["error", { "extensions": [".js", ".jsx"] }],
+=======
+    "semi": ["error", "never"]
+>>>>>>> Fix eslint style issue
   },
 }
