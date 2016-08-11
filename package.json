@@ -5,13 +5,8 @@
   "main": "index.js",
   "scripts": {
     "clean": "rm -rf dist",
-<<<<<<< 442ce778742edecb8c8234a99f93838f6bd59044
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
-=======
-    "lint": "eslint --ext .jsx --ext .js .",
-    "lint:fix": "eslint --ext .jsx --ext .js --fix .",
->>>>>>> Fix eslint style issue
     "start": "webpack-dev-server",
     "pretest": "npm run lint",
     "test": "mocha --compilers js:babel-register --require ./test/test-helper.js --recursive",
