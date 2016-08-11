@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 
 class LiveEditor extends Component { // eslint-disable-line react/prefer-stateless-function
   render() {
@@ -6,8 +6,8 @@ class LiveEditor extends Component { // eslint-disable-line react/prefer-statele
       <div className="live-editor">
         Live Editor
       </div>
-    );
+    )
   }
 }
 
-export default LiveEditor;
+export default LiveEditor
