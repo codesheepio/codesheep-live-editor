@@ -4,5 +4,5 @@ import LivePlayground from './components/LivePlayground'
 
 ReactDOM.render(
   <LivePlayground />,
-  document.getElementById('root') // eslint-disable-line no-undef
+  document.getElementById('root')
 )

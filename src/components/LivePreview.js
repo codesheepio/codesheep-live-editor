@@ -4,7 +4,7 @@ import { transform } from 'babel-core'
 import babelPresetEs2015 from 'babel-preset-es2015'
 import babelPresetReact from 'babel-preset-react'
 
-class LivePreview extends Component { // eslint-disable-line react/prefer-stateless-function
+class LivePreview extends Component {
   componentDidMount() {
     this.executeCode(this.props.code)
   }

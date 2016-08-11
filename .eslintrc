@@ -1,13 +1,23 @@
 {
   "env": {
+    "browser": true,
     "es6": true,
-    "node": true,
+    "node": true
   },
-  "extends": "airbnb",
+  "extends": [
+    "airbnb",
+    "eslint:recommended",
+    "plugin:react/recommended"
+  ],
+  "plugins": [
+    "react"
+  ],
   "rules": {
     "arrow-body-style": ["error", "always"],
     "no-trailing-spaces": ["error", { "skipBlankLines": true }],
     "semi": ["error", "never"],
     "react/jsx-filename-extension": ["error", { "extensions": [".js", ".jsx"] }],
-  },
+    "react/require-extension": "off",
+    "react/prefer-stateless-function": "off"
+  }
 }
