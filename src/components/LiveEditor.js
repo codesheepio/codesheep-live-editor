@@ -10,4 +10,12 @@ class LiveEditor extends Component {
   }
 }
 
+LiveEditor.propTypes = {
+  code: React.PropTypes.string.isRequired,
+}
+
+LiveEditor.defaultProps = {
+  code: '',
+}
+
 export default LiveEditor
