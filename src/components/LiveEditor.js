@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import CodeMirror from 'react-codemirror'
+import 'codemirror/lib/codemirror.css'
+import 'codemirror/theme/monokai.css'
 
 require('codemirror/mode/jsx/jsx')
 
