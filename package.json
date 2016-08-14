@@ -9,7 +9,7 @@
     "lint:fix": "eslint --fix .",
     "start": "webpack-dev-server",
     "pretest": "npm run lint",
-    "test": "mocha --compilers js:babel-register --require ./test/test-helper.js --recursive",
+    "test": "mocha --compilers js:babel-register --require ./test/test-helper.js --require ignore-styles --recursive",
     "test:watch": "npm run test -- --watch"
   },
   "repository": {
@@ -52,6 +52,7 @@
     "eslint-plugin-jsx-a11y": "^2.0.1",
     "eslint-plugin-mocha": "^4.3.0",
     "eslint-plugin-react": "^6.0.0",
+    "ignore-styles": "^4.0.0",
     "jquery": "^3.1.0",
     "jsdom": "^9.4.1",
     "json-loader": "^0.5.4",
