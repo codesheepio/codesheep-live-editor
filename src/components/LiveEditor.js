@@ -12,7 +12,6 @@ class LiveEditor extends Component {
   }
 
   handleCodeChange(code) {
-    console.log('handleCodeChange') // eslint-disable-line
     this.props.updateCode(code)
   }
 
@@ -29,7 +28,7 @@ class LiveEditor extends Component {
     return (
       <div className="live-editor">
         <CodeMirror
-          ref={(ref) => { this.codeMirror = ref }}
+          ref={(ref) => { this.wrapper = ref }}
           className="codemirror"
           external="true"
           options={options}
@@ -40,35 +39,6 @@ class LiveEditor extends Component {
     )
   }
 }
-
-/*const LiveEditor = ({code, updateCode}) => {
-
-  const handleCodeChange = (code) => {
-    console.log('change') // eslint-disable-line
-    updateCode(code)
-  }
-
-  const options = {
-    mode: 'jsx',
-    lineWrapping: true,
-    smartIndent: true,
-    matchBrackets: true,
-    theme: 'monokai',
-    readOnly: false,
-  }
-
-  return (
-    <div className="live-editor">
-      <CodeMirror
-        className="codemirror"
-        external="true"
-        options={options}
-        value={code}
-        onChange={handleCodeChange}
-      />
-    </div>
-  )
-}*/
 
 LiveEditor.propTypes = {
   code: React.PropTypes.string.isRequired,
