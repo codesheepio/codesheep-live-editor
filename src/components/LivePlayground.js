@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import LiveEditor from './LiveEditor'
+import LiveEditor from '../containers/LiveEditorContainer'
 import LivePreview from './LivePreview'
 
 class LivePlayground extends Component {
