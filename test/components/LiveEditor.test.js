@@ -24,7 +24,7 @@ describe('LiveEditor', () => {
     expect(component).to.have.class('live-editor')
   })
 
-  it('calls updateCode when text changed', () => {
+  it('should call updateCode() when text changed', () => {
     const componentInstance = renderIntoDocument(<LiveEditor {...props} />)
     const codeMirror = componentInstance.wrapper.codeMirror
     const doc = codeMirror.doc // TextArea inside CodeMirror
