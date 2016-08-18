@@ -6,9 +6,7 @@ describe('LivePreview', () => {
 
   beforeEach(() => {
     const props = {
-      code: 'import React from \'react\'\n' +
-            '\n' +
-            'var HelloMessage = React.createClass({\n' +
+      code: 'var HelloMessage = React.createClass({\n' +
             '  render: function() {\n' +
             '    return <div>Hello {this.props.name}</div>;\n' +
             '  }\n' +
@@ -16,14 +14,10 @@ describe('LivePreview', () => {
             '   \n' +
             'export default <HelloMessage name="John" />;',
     }
-    console.log('Before render') // eslint-disable-line
-    console.log(LivePreview) // eslint-disable-line
     component = renderComponent(LivePreview, props)
-    console.log('After render') // eslint-disable-line
-    console.log(LivePreview) // eslint-disable-line
   })
 
-  it.only('should have a correct class', () => {
+  it('should have a correct class', () => {
     expect(component).to.have.class('live-preview')
   })
 
