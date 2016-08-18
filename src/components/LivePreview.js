@@ -10,14 +10,13 @@ class LivePreview extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    clearTimeout(this.timeoutID)
-
     if (this.props.code !== prevProps.code) {
       this.executeCode(this.props.code)
     }
   }
 
   compileCode(code) {
+    console.log(code) // eslint-disable-line
     return transform(
       code,
       { presets: [babelPresetEs2015, babelPresetReact] }
@@ -29,10 +28,14 @@ class LivePreview extends Component {
 
     try {
       const compiledCode = this.compileCode(code)
+      console.log(compiledCode) // eslint-disable-line
       const result = eval(compiledCode) // eslint-disable-line no-eval
       ReactDOM.render(result, this.livePreview)
     } catch (err) {
-      // TODO: Handle err
+      ReactDOM.render(
+        <div className="preview-error">{err.toString()}</div>,
+        this.livePreview
+      )
     }
   }
 
