@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import LiveEditor from './LiveEditor'
-import LivePreview from './LivePreview'
 
 class LivePlayground extends Component {
   constructor(props) {
@@ -8,6 +7,11 @@ class LivePlayground extends Component {
   }
 
   render() {
+    // LivePreview will be modified by eval.
+    // So, we need to delete cache and re-import it until we find a better solution
+    delete require.cache[require.resolve('./LivePreview')]
+    const LivePreview = require('./LivePreview').default
+
     return (
       <div className="live-playground">
         <LiveEditor code={this.props.code} updateCode={this.props.updateCode} />

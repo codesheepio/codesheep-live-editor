@@ -16,7 +16,6 @@ class LivePreview extends Component {
   }
 
   compileCode(code) {
-    console.log(code) // eslint-disable-line
     return transform(
       code,
       { presets: [babelPresetEs2015, babelPresetReact] }
@@ -24,12 +23,15 @@ class LivePreview extends Component {
   }
 
   executeCode(code) {
+    // Remove previous result
     ReactDOM.unmountComponentAtNode(this.livePreview)
+    // Make React available for eval
+    const React = require('react') // eslint-disable-line no-unused-vars
 
     try {
       const compiledCode = this.compileCode(code)
-      console.log(compiledCode) // eslint-disable-line
-      const result = eval(compiledCode) // eslint-disable-line no-eval
+      const result = eval(compiledCode)
+
       ReactDOM.render(result, this.livePreview)
     } catch (err) {
       ReactDOM.render(
