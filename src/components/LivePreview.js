@@ -25,12 +25,18 @@ class LivePreview extends Component {
   executeCode(code) {
     // Remove previous result
     ReactDOM.unmountComponentAtNode(this.livePreview)
-    // Make React available for eval
-    const React = require('react') // eslint-disable-line no-unused-vars
 
     try {
       const compiledCode = this.compileCode(code)
-      const result = eval(compiledCode)
+      // Prevent eval to touch global module and exports
+      const execute = (0, eval)(`
+        (function(module, exports, React) {
+          ${compiledCode}
+        })
+      `)
+      const privateModule = { exports: { } }
+      execute(privateModule, privateModule.exports, React)
+      const result = privateModule.exports.default
 
       ReactDOM.render(result, this.livePreview)
     } catch (err) {

@@ -1,14 +1,10 @@
 import { expect, renderComponent } from '../test-helper'
+import LivePreview from '../../src/components/LivePreview'
 
 describe('LivePreview', () => {
   let component
 
   beforeEach(() => {
-    // LivePreview will be modified by eval.
-    // So, we need to delete cache and re-import it until we find a better solution
-    delete require.cache[require.resolve('../../src/components/LivePreview')]
-    const LivePreview = require('../../src/components/LivePreview').default
-
     const props = {
       code: `var HelloMessage = React.createClass({
               render: function() {
