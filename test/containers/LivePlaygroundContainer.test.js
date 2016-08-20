@@ -1,7 +1,7 @@
 import { expect, renderComponent, sinon } from '../test-helper'
-import LivePlayground from '../../src/components/LivePlayground'
+import LivePlaygroundContainer from '../../src/containers/LivePlaygroundContainer'
 
-describe('LivePlayground', () => {
+describe('LivePlaygroundContainer', () => {
   let component
 
   beforeEach(() => {
@@ -9,7 +9,7 @@ describe('LivePlayground', () => {
       code: '',
       updateCode: sinon.stub(),
     }
-    component = renderComponent(LivePlayground, props)
+    component = renderComponent(LivePlaygroundContainer, props)
   })
 
   it('should have a correct class', () => {

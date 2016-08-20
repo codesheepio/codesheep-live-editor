@@ -10,8 +10,6 @@ class LivePreview extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    clearTimeout(this.timeoutID)
-
     if (this.props.code !== prevProps.code) {
       this.executeCode(this.props.code)
     }
@@ -25,14 +23,21 @@ class LivePreview extends Component {
   }
 
   executeCode(code) {
+    // Remove previous result
     ReactDOM.unmountComponentAtNode(this.livePreview)
+    // Make React available for eval
+    const React = require('react') // eslint-disable-line no-unused-vars
 
     try {
       const compiledCode = this.compileCode(code)
-      const result = eval(compiledCode) // eslint-disable-line no-eval
+      const result = eval(compiledCode)
+
       ReactDOM.render(result, this.livePreview)
     } catch (err) {
-      // TODO: Handle err
+      ReactDOM.render(
+        <div className="preview-error">{err.toString()}</div>,
+        this.livePreview
+      )
     }
   }
 
