@@ -28,14 +28,17 @@ class LivePreview extends Component {
 
     try {
       const compiledCode = this.compileCode(code)
+
       // Prevent eval to touch global module and exports
-      const execute = (0, eval)(`
-        (function(module, exports, React) {
-          ${compiledCode}
-        })
-      `)
       const privateModule = { exports: { } }
+
+      // Construct a function taking 3 params (module, exports, React) and will run compiledCode
+      const execute = new Function(['module', 'exports', 'React'], compiledCode)
+
+      // Run compiledCode with injected module, exports, and React
       execute(privateModule, privateModule.exports, React)
+
+      // Code must end with 'export default <ReactClass />' for being rendered with ReactDOM
       const result = privateModule.exports.default
 
       ReactDOM.render(result, this.livePreview)
