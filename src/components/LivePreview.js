@@ -32,16 +32,18 @@ class LivePreview extends Component {
       // Prevent eval to touch global module and exports
       const privateModule = { exports: { } }
 
-      // Construct a function taking 3 params (module, exports, React) and will run compiledCode
-      const execute = new Function(['module', 'exports', 'React'], compiledCode)
+      // Construct a function taking 5 params (module, exports, React, ReactDOM, DOM node to be mounted) and will run compiledCode
+      const execute = new Function(['module', 'exports', 'React', 'ReactDOM', 'mountNode'], compiledCode)
 
-      // Run compiledCode with injected module, exports, and React
-      execute(privateModule, privateModule.exports, React)
+      // Run compiledCode with injected module, exports, and React, ReactDOM, and mounted node
+      // Code in LiveEditor is able to call ReactDOM.render
+      execute(privateModule, privateModule.exports, React, ReactDOM, this.livePreview)
 
       // Code must end with 'export default <ReactClass />' for being rendered with ReactDOM
-      const result = privateModule.exports.default
+      //const result = privateModule.exports.default
+      //ReactDOM.render(result, this.livePreview)
 
-      ReactDOM.render(result, this.livePreview)
+      // In code, use ReactDOM.render(<ReactClass />, mountNode)
     } catch (err) {
       ReactDOM.render(
         <div className="preview-error">{err.toString()}</div>,
