@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom'
 import { transform } from 'babel-core'
 import babelPresetEs2015 from 'babel-preset-es2015'
 import babelPresetReact from 'babel-preset-react'
+import babelObjectRestSpread from 'babel-plugin-transform-object-rest-spread'
 
 class LivePreview extends Component {
   componentDidMount() {
@@ -18,7 +19,10 @@ class LivePreview extends Component {
   compileCode(code) {
     return transform(
       code,
-      { presets: [babelPresetEs2015, babelPresetReact] }
+      {
+        presets: [babelPresetEs2015, babelPresetReact],
+        plugins: [babelObjectRestSpread],
+      }
     ).code
   }
 

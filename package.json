@@ -29,6 +29,7 @@
   "homepage": "https://github.com/codesheepio/codesheep-live-editor#readme",
   "dependencies": {
     "babel-core": "^6.13.2",
+    "babel-plugin-transform-object-rest-spread": "^6.16.0",
     "babel-preset-es2015": "^6.13.2",
     "babel-preset-react": "^6.11.1",
     "codemirror": "^5.17.0",
