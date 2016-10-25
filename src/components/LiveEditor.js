@@ -23,6 +23,7 @@ class LiveEditor extends Component {
       matchBrackets: true,
       theme: 'monokai',
       readOnly: false,
+      lineNumbers: true,
     }
 
     return (
