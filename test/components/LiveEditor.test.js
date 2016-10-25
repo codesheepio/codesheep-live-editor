@@ -14,6 +14,17 @@ describe('LiveEditor', () => {
       editorId: 'JS_EDITOR',
       code: '',
       updateCode: sinon.spy(),
+      options: {
+        mode: 'jsx',
+        lineWrapping: true,
+        smartIndent: true,
+        matchBrackets: true,
+        theme: 'monokai',
+        readOnly: false,
+        lineNumbers: true,
+        tabSize: 2,
+        indentUnit: 2,
+      },
     }
     state = {
       code: {

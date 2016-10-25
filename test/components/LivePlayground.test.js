@@ -6,7 +6,7 @@ describe('LivePlayground', () => {
 
   beforeEach(() => {
     const props = {
-      code: '',
+      code: {},
       updateCode: sinon.stub(),
     }
     component = renderComponent(LivePlayground, props)
