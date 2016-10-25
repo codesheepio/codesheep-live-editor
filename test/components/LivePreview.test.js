@@ -3,9 +3,10 @@ import LivePreview from '../../src/components/LivePreview'
 
 describe('LivePreview', () => {
   let component
+  let props
 
   beforeEach(() => {
-    const props = {
+    props = {
       code: `var HelloMessage = React.createClass({
               render: function() {
                 return <div>Hello {this.props.name}</div>;
@@ -22,6 +23,24 @@ describe('LivePreview', () => {
   })
 
   it('should transform and execute code, then, display result', () => {
+    expect(component).to.have.html(
+      '<div data-reactroot=""><!-- react-text: 2 -->Hello <!-- /react-text -->' +
+      '<!-- react-text: 3 -->CodeSheep<!-- /react-text --></div>')
+  })
+
+  it('should handle ES6 class', () => {
+    props = {
+      code: `class Hello extends React.Component {
+              render() {
+                return (
+                  <div>Hello {this.props.name}</div>
+                )
+              }
+            }
+            ReactDOM.render(<Hello name="CodeSheep" />, mountNode)`
+    }
+    component = renderComponent(LivePreview, props)
+
     expect(component).to.have.html(
       '<div data-reactroot=""><!-- react-text: 2 -->Hello <!-- /react-text -->' +
       '<!-- react-text: 3 -->CodeSheep<!-- /react-text --></div>')
