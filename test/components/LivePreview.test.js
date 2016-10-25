@@ -22,6 +22,17 @@ describe('LivePreview', () => {
     expect(component).to.have.class('live-preview')
   })
 
+  it('should be able to access React and ReactDOM', () => {
+    props = {
+      code: `const ans = React ? <div>YES</div> : <div>NO</div>
+            ReactDOM.render(ans, mountNode)`
+    }
+    component = renderComponent(LivePreview, props)
+
+    expect(component).to.have.html(
+      '<div data-reactroot="">YES</div>')
+  })
+
   it('should transform and execute code, then, display result', () => {
     expect(component).to.have.html(
       '<div data-reactroot=""><!-- react-text: 2 -->Hello <!-- /react-text -->' +
