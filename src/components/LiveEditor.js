@@ -24,6 +24,8 @@ class LiveEditor extends Component {
       theme: 'monokai',
       readOnly: false,
       lineNumbers: true,
+      tabSize: 2,
+      indentUnit: 2,
     }
 
     return (
