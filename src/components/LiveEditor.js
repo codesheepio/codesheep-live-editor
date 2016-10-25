@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, PropTypes } from 'react'
 import CodeMirror from 'react-codemirror'
 import 'codemirror/lib/codemirror.css'
 import 'codemirror/theme/monokai.css'
@@ -12,7 +12,7 @@ class LiveEditor extends Component {
   }
 
   handleCodeChange(code) {
-    this.props.updateCode(code)
+    this.props.updateCode(this.props.editorId, code)
   }
 
   render() {
@@ -44,8 +44,9 @@ class LiveEditor extends Component {
 }
 
 LiveEditor.propTypes = {
-  code: React.PropTypes.string.isRequired,
-  updateCode: React.PropTypes.func.isRequired,
+  editorId: PropTypes.string.isRequired,
+  code: PropTypes.string.isRequired,
+  updateCode: PropTypes.func.isRequired,
 }
 
 LiveEditor.defaultProps = {

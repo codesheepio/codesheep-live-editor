@@ -1,18 +1,19 @@
-import React, { Component } from 'react'
+import React, { Component, PropTypes } from 'react'
 import ReactDOM from 'react-dom'
 import { transform } from 'babel-core'
 import babelPresetEs2015 from 'babel-preset-es2015'
 import babelPresetReact from 'babel-preset-react'
 import babelObjectRestSpread from 'babel-plugin-transform-object-rest-spread'
+import { JS_EDITOR } from '../constants/windowIds'
 
 class LivePreview extends Component {
   componentDidMount() {
-    this.executeCode(this.props.code)
+    this.executeCode(this.props.code[JS_EDITOR])
   }
 
   componentDidUpdate(prevProps) {
-    if (this.props.code !== prevProps.code) {
-      this.executeCode(this.props.code)
+    if (this.props.code[JS_EDITOR] !== prevProps.code[JS_EDITOR]) {
+      this.executeCode(this.props.code[JS_EDITOR])
     }
   }
 
@@ -66,7 +67,7 @@ class LivePreview extends Component {
 }
 
 LivePreview.propTypes = {
-  code: React.PropTypes.string.isRequired,
+  code: PropTypes.object.isRequired,
 }
 
 export default LivePreview

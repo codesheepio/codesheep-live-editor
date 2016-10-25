@@ -11,11 +11,14 @@ describe('LiveEditor', () => {
 
   beforeEach(() => {
     props = {
+      editorId: 'JS_EDITOR',
       code: '',
       updateCode: sinon.spy(),
     }
     state = {
-      code: '<TestComponent />',
+      code: {
+        JS_EDITOR: '<TestComponent />',
+      },
     }
     component = renderComponent(LiveEditor, props, state)
   })
@@ -45,6 +48,6 @@ describe('LiveEditor', () => {
       }
     )
 
-    expect(props.updateCode).to.have.been.calledWith('Hello')
+    expect(props.updateCode).to.have.been.calledWith('JS_EDITOR', 'Hello')
   })
 })

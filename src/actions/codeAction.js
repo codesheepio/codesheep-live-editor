@@ -1,12 +1,15 @@
-import types from './types'
+import { UPDATE_CODE } from './types'
 
-const updateCode = (code) => {
+const updateCode = (windowId, code) => {
   return {
-    type: types.UPDATE_CODE,
-    code,
+    type: UPDATE_CODE,
+    payload: {
+      windowId,
+      code,
+    }
   }
 }
 
-export default {
-  updateCode
+export {
+  updateCode // eslint-disable-line import/prefer-default-export
 }

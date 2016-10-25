@@ -7,13 +7,15 @@ describe('LivePreview', () => {
 
   beforeEach(() => {
     props = {
-      code: `var HelloMessage = React.createClass({
+      code: {
+        JS_EDITOR: `var HelloMessage = React.createClass({
               render: function() {
                 return <div>Hello {this.props.name}</div>;
               }
             });
 
             ReactDOM.render(<HelloMessage name="CodeSheep" />, mountNode);`,
+      },
     }
     component = renderComponent(LivePreview, props)
   })
@@ -24,8 +26,10 @@ describe('LivePreview', () => {
 
   it('should be able to access React and ReactDOM', () => {
     props = {
-      code: `const ans = React ? <div>YES</div> : <div>NO</div>
-            ReactDOM.render(ans, mountNode)`
+      code: {
+        JS_EDITOR: `const ans = React ? <div>YES</div> : <div>NO</div>
+                   ReactDOM.render(ans, mountNode)`,
+      },
     }
     component = renderComponent(LivePreview, props)
 
@@ -41,7 +45,8 @@ describe('LivePreview', () => {
 
   it('should handle ES6 class', () => {
     props = {
-      code: `class Hello extends React.Component {
+      code: {
+        JS_EDITOR: `class Hello extends React.Component {
               render() {
                 return (
                   <div>Hello {this.props.name}</div>
@@ -49,6 +54,7 @@ describe('LivePreview', () => {
               }
             }
             ReactDOM.render(<Hello name="CodeSheep" />, mountNode)`
+      },
     }
     component = renderComponent(LivePreview, props)
 
