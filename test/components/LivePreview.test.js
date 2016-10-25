@@ -12,7 +12,7 @@ describe('LivePreview', () => {
               }
             });
 
-            export default <HelloMessage name="CodeSheep" />;`,
+            ReactDOM.render(<HelloMessage name="CodeSheep" />, mountNode);`,
     }
     component = renderComponent(LivePreview, props)
   })
