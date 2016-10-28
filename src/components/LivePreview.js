@@ -1,24 +1,29 @@
-import React, { Component } from 'react'
+import React, { Component, PropTypes } from 'react'
 import ReactDOM from 'react-dom'
 import { transform } from 'babel-core'
 import babelPresetEs2015 from 'babel-preset-es2015'
 import babelPresetReact from 'babel-preset-react'
+import babelObjectRestSpread from 'babel-plugin-transform-object-rest-spread'
+import { JS_EDITOR } from '../constants/windowIds'
 
 class LivePreview extends Component {
   componentDidMount() {
-    this.executeCode(this.props.code)
+    this.executeCode(this.props.code[JS_EDITOR])
   }
 
   componentDidUpdate(prevProps) {
-    if (this.props.code !== prevProps.code) {
-      this.executeCode(this.props.code)
+    if (this.props.code[JS_EDITOR] !== prevProps.code[JS_EDITOR]) {
+      this.executeCode(this.props.code[JS_EDITOR])
     }
   }
 
   compileCode(code) {
     return transform(
       code,
-      { presets: [babelPresetEs2015, babelPresetReact] }
+      {
+        presets: [babelPresetEs2015, babelPresetReact],
+        plugins: [babelObjectRestSpread],
+      }
     ).code
   }
 
@@ -32,16 +37,18 @@ class LivePreview extends Component {
       // Prevent eval to touch global module and exports
       const privateModule = { exports: { } }
 
-      // Construct a function taking 3 params (module, exports, React) and will run compiledCode
-      const execute = new Function(['module', 'exports', 'React'], compiledCode)
+      // Construct a function taking 5 params (module, exports, React, ReactDOM, DOM node to be mounted) and will run compiledCode
+      const execute = new Function(['module', 'exports', 'React', 'ReactDOM', 'mountNode'], compiledCode)
 
-      // Run compiledCode with injected module, exports, and React
-      execute(privateModule, privateModule.exports, React)
+      // Run compiledCode with injected module, exports, and React, ReactDOM, and mounted node
+      // Code in LiveEditor is able to call ReactDOM.render
+      execute(privateModule, privateModule.exports, React, ReactDOM, this.livePreview)
 
       // Code must end with 'export default <ReactClass />' for being rendered with ReactDOM
-      const result = privateModule.exports.default
+      //const result = privateModule.exports.default
+      //ReactDOM.render(result, this.livePreview)
 
-      ReactDOM.render(result, this.livePreview)
+      // In code, use ReactDOM.render(<ReactClass />, mountNode)
     } catch (err) {
       ReactDOM.render(
         <div className="preview-error">{err.toString()}</div>,
@@ -60,7 +67,7 @@ class LivePreview extends Component {
 }
 
 LivePreview.propTypes = {
-  code: React.PropTypes.string.isRequired,
+  code: PropTypes.object.isRequired,
 }
 
 export default LivePreview

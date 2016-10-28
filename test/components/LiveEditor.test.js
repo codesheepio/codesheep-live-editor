@@ -11,11 +11,25 @@ describe('LiveEditor', () => {
 
   beforeEach(() => {
     props = {
+      editorId: 'JS_EDITOR',
       code: '',
       updateCode: sinon.spy(),
+      options: {
+        mode: 'jsx',
+        lineWrapping: true,
+        smartIndent: true,
+        matchBrackets: true,
+        theme: 'monokai',
+        readOnly: false,
+        lineNumbers: true,
+        tabSize: 2,
+        indentUnit: 2,
+      },
     }
     state = {
-      code: '<TestComponent />',
+      code: {
+        JS_EDITOR: '<TestComponent />',
+      },
     }
     component = renderComponent(LiveEditor, props, state)
   })
@@ -45,6 +59,6 @@ describe('LiveEditor', () => {
       }
     )
 
-    expect(props.updateCode).to.have.been.calledWith('Hello')
+    expect(props.updateCode).to.have.been.calledWith('JS_EDITOR', 'Hello')
   })
 })

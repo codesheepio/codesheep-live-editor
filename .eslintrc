@@ -12,6 +12,12 @@
   "plugins": [
     "react"
   ],
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "ecmaFeatures": {
+      "experimentalObjectRestSpread": true,
+    },
+  },
   "rules": {
     "arrow-body-style": ["error", "always"],
     "no-trailing-spaces": ["error", { "skipBlankLines": true }],
